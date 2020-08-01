@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XCripto 1.0.0</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="photon/css/photon.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <p class="title" style="padding: 5px; font-weight: bold; font-size: 14px">XCripto 1.0 - Destaques</p>
+            <div class="toolbar-actions">
+                <div class="btn-group">
+                    <button class="btn btn-default" style="padding: 10px">
+                        <span class="icon icon-home" style="margin-right: 3px"></span>
+                        <a href="main.html" role="button"
+                            style="margin-top:10px; text-decoration: none; color: black">Home</a>
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px;" @click="createDestaque()">
+                        <span class="icon icon-plus"></span>
+                        Novo Destaque
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px" @click="makeDebug()">
+                        <span class="icon icon-info-circled" style="margin-right: 3px"></span>
+                        Ativar Modo Debug
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <table class="table table-striped" id="font-table">
+                        <thead>
+                            <tr>
+                                <th>Moeda</th>
+                                <th>Descrição</th>
+                                <th>Link</th>                                
+                                <th>Editar</th>
+                                <th>Deletar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="destaque in destaques">
+                                <td v-if="destaque.ativo == true">{{destaque.moeda}}</td>
+                                <td v-if="destaque.ativo == true">{{destaque.descricao}}</td>
+                                <td v-if="destaque.ativo == true">{{destaque.link}}</td>                                
+                                <td v-if="destaque.ativo == true">
+                                    <button @click="editDestaque(destaque)" id="font-button"
+                                        class="btn btn-large btn-primary">Editar</button>
+                                </td>
+                                <td v-if="destaque.ativo == true">
+                                    <button @click="deleteDestaque(destaque)" id="font-button"
+                                        class="btn btn-large btn-primary">Deletar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" v-if="debug == true">
+                        <div class="col-md-12" style="padding: 0px">
+                            <div style="padding: 20px; background-color: black; color: white">
+                                <h1 style="color: white">Debug</h1>
+                                <pre style="background-color: black; color: white;border: 0px">{{$data | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal" v-if="openModal">
+        <div class="wrap">
+            <form class="pane-body">
+                <h3 v-if="mode=='cadastro'">
+                    <strong>Cadastro de Destaques</strong>
+                </h3>
+                <h3 v-if="mode=='edicao'">
+                    <strong>Edição de Destaques</strong>
+                </h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" v-model="destaque.moeda" placeholder="Moeda">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Descriçção</label>
+                            <textarea v-model="destaque.descricao" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="cpf" type="text" class="form-control" v-model="destaque.link" placeholder="Link">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-large btn-negative" @click="openModal=false">Fechar</button>
+                    <button type="button" class="btn btn-large btn-primary"
+                        @click="destaqueAddOrUpdate()">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/screens/destaques/destaques.js"></script>
+
+</body>
+
+</html>

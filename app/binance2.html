@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colibri 1.0.0</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/nfe.css" rel="stylesheet">
+    <link rel="stylesheet" href="datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="datepicker/bootsttrap-datepicker.min.css">
+</head>
+
+<body id="body">
+    <div class="container-fluid" style="padding-left: 30px; padding-right: 30px; padding-top: 20px">
+        <div class="row" id="wcontent">
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="main.html" role="button">Home</a>
+            </div>
+        </div>
+        <div class="row" id="wcontentdown" style="margin-top: 10px">
+            <div class="col-md-3" style="overflow: auto; height: 400px;">
+                <table class="table table-condensed">
+                    <thead>
+                        <th>Pair</th>
+                        <th>Preço</th>
+                        <th>Mudança</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="tk in tickers24hrs">
+                            <td>{{tk.symbol}}</td>
+                            <td>{{tk.lastPrice}}</td>
+                            <td>{{tk.priceChange}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th>Pair</th>
+                        <th>Preço</th>
+                        <th>Mudança</th>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h1>BUY | SELL</h1>
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">LIMIT</a></li>
+                        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">MARKET</a>
+                        </li>
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">STOP-LIMIT</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label style="margin-top: 10px">Buy: {{moeda}}</label>
+                                            <label style="margin-top: 10px" class="pull-right">{{moeda}} Balance:
+                                                {{saldoNaMoeda}}</label>
+                                            <input type="number" class="form-control" placeholder="Price(preço)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="number" class="form-control" placeholder="Amount(quantidade)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="number" class="form-control" placeholder="Total">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-success">Buy(comprar){{moeda}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label style="margin-top: 10px">Buy: {{moeda}}</label>
+                                            <label style="margin-top: 10px" class="pull-right">{{moeda}} Balance:
+                                                {{saldoNaMoeda}}</label>
+                                            <input type="number" class="form-control" placeholder="Price(preço)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="number" class="form-control" placeholder="Amount(quantidade)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="number" class="form-control" placeholder="Total">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-success">Buy(comprar){{moeda}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal" style="border: 1px dashed black">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>Buy: {{moeda}}</label>
+                                                    <label class="pull-right">{{moeda}} Balance:
+                                                        {{saldoNaMoeda}}</label>
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Price(preço)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Amount(quantidade)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" placeholder="Total">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit"
+                                                class="btn btn-success pull-right">Buy(comprar){{moeda}}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal" style="border: 1px dashed black">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>Sell: {{moeda}}</label>
+                                                    <label class="pull-right">{{moeda}} Balance:
+                                                        {{saldoNaMoeda}}</label>
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Price(preço)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Amount(quantidade)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" placeholder="Total">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit"
+                                                class="btn btn-danger pull-right">Sell(vender){{moeda}}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal" style="border: 1px dashed black">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>Buy: {{moeda}}</label>
+                                                    <label class="pull-right">{{moeda}} Balance:
+                                                        {{saldoNaMoeda}}</label>
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Price(preço)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Amount(quantidade)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" placeholder="Total">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit"
+                                                class="btn btn-success pull-right">Buy(comprar){{moeda}}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal" style="border: 1px dashed black">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <label>Sell: {{moeda}}</label>
+                                                    <label class="pull-right">{{moeda}} Balance:
+                                                        {{saldoNaMoeda}}</label>
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Price(preço)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control"
+                                                        placeholder="Amount(quantidade)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" placeholder="Total">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit"
+                                                class="btn btn-danger pull-right">Sell(vender){{moeda}}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="overflow: auto; height: 400px;">
+                <table class="table table-condensed">
+                    <thead>
+                        <th>Pair</th>
+                        <th>Preço</th>
+                        <th>Mudança</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="tk in tickers24hrs">
+                            <td>{{tk.symbol}}</td>
+                            <td>{{tk.lastPrice}}</td>
+                            <td>{{tk.priceChange}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th>Pair</th>
+                        <th>Preço</th>
+                        <th>Mudança</th>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="datatables/dataTables.bootstrap.min.js"></script>
+    <script src="scripts/screens/binance/binance.js"></script>
+
+    <script>
+        $(function () {
+            $("#tickers24hrs").DataTable({
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "language": {
+                    "url": "datatables/json/Portuguese-Brasil.json"
+                },
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+</body>
+
+</html>

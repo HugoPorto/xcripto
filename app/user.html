@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XCripto 1.0.0</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="photon/css/photon.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <p class="title" style="padding: 5px; font-weight: bold; font-size: 14px">XCripto 1.0 - User</p>
+            <div class="toolbar-actions">
+                <div class="btn-group">
+                    <button class="btn btn-default" style="padding: 10px">
+                        <span class="icon icon-home" style="margin-right: 3px"></span>
+                        <a href="main.html" role="button"
+                            style="margin-top:10px; text-decoration: none; color: black">Home</a>
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px" @click="makeDebug()">
+                        <span class="icon icon-info-circled" style="margin-right: 3px"></span>
+                        Ativar Modo Debug
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <table class="table table-striped" id="font-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Pass</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users">
+                                <td>{{user.nome}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.pass}}</td>                        
+                                <td>
+                                    <button @click="editUser(user)" id="font-button"
+                                        class="btn btn-large btn-primary">Editar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" v-if="debug == true">
+                        <div class="col-md-12" style="padding: 0px">
+                            <div style="padding: 20px; background-color: black; color: white">
+                                <h1 style="color: white">Debug</h1>
+                                <pre
+                                    style="background-color: black; color: white;border: 0px">{{$data.user | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal" v-if="openModal">
+        <div class="wrap">
+            <form class="pane-body">
+                <h3 v-if="mode=='cadastro'">
+                    <strong>Cadastro de Clientes</strong>
+                </h3>
+                <h3 v-if="mode=='edicao'">
+                    <strong>Edição de Clientes</strong>
+                </h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="nome" type="text" class="form-control" v-model="user.nome" placeholder="Nome"
+                                style="border-color: red">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="nome" type="text" class="form-control" v-model="user.email" placeholder="E-mail"
+                                style="border-color: red">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="cpf" type="text" class="form-control" v-model="user.pass" placeholder="Password"
+                                style="border-color: red">
+                        </div>
+                    </div>
+                </div>          
+                <hr>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-large btn-negative" @click="openModal=false">Fechar</button>
+                    <button type="button" class="btn btn-large btn-primary"
+                        @click="userAddOrUpdate()">Salvar</button>
+                </div>
+            </form>
+            <p v-if="debug == true" style="padding: 10px; background-color: black; color: white">{{user | json}}</p>
+        </div>
+    </div>
+    <script src="scripts/screens/user/user.js"></script>
+
+</body>
+
+</html>

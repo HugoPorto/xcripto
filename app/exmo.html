@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XCripto 1.0.0</title>
+    <meta charset="utf-8">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="photon/css/photon.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Electron Javascript -->
+    <!-- <script src="app.js" charset="utf-8"></script> -->
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <p class="title" style="padding: 5px; font-weight: bold; font-size: 14px">XCripto 1.0.0 - Exmo</p>
+            <div class="toolbar-actions">
+                <div class="btn-group">
+                    <button class="btn btn-default" style="padding: 10px">
+                        <span class="icon icon-home" style="margin-right: 3px"></span>
+                        <a href="main.html" role="button"
+                            style="margin-top:10px; text-decoration: none; color: black">Home</a>
+                    </button>
+
+                    <!--
+                        <button class="btn btn-default" @click="showBTC()" style="padding: 10px">
+                        <span class="icon icon-plus"></span>
+                        Novo Cliente
+                    </button>
+                    -->
+
+                    <button class="btn btn-default" style="padding: 10px" @click="makeDebug()">
+                        <span class="icon icon-info-circled" style="margin-right: 3px"></span>
+                        Ativar Modo Debug
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <!--
+                <div class="pane-sm sidebar">
+                    <nav class="nav-group">
+                        <h5 class="nav-group-title">Menu</h5>
+                        <span class="nav-group-item">
+                            <span class="icon icon-users"></span>
+                            <a href="index.html" style="text-decoration: none; color: black">
+                                Clientes
+                            </a>
+                        </span>
+                        <span class="nav-group-item">
+                            <span class="icon icon-layout"></span>
+                            <a href="produtos.html" style="text-decoration: none; color: black">
+                                Produtos
+                            </a>
+                        </span>
+                        <span class="nav-group-item">
+                            <span class="icon icon-basket"></span>
+                            <a href="vendas.html" style="text-decoration: none; color: black">
+                                Vendas
+                            </a>
+                        </span>
+                        <span class="nav-group-item">
+                            <span class="icon icon-tools"></span>
+                            <a href="configuracoes.html" style="text-decoration: none; color: black">
+                                Configurações
+                            </a>
+                        </span>
+                        <span class="nav-group-item">
+                            <span class="icon icon-basket"></span>
+                            <a href="frente_caixa.html" style="text-decoration: none; color: black">
+                                Frente de Caixa
+                            </a>
+                        </span>
+                    </nav>
+                </div>
+                -->
+
+                <div class="pane">
+
+                    <!-- <div class="row"
+                        style="padding-top: 15px; padding-bottom: 0px; padding-right: 10px; padding-left: 10px">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" style="border-color: red"
+                                    v-model="empresa.regimeTributario">
+                                    <option value="" selected>Selecionar Moeda</option>
+                                    <option value="{{m}}" v-for="m in moedas">
+                                        {{m}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> -->
+                    <table class="table table-striped" id="font-table" v-if="erro !== true">
+                        <thead>
+                            <tr>
+                                <td>trade_id</td>
+                                <td>type</td>
+                                <td>quantity</td>
+                                <td>price</td>
+                                <td>amount</td>
+                                <td>date</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--
+                            <tr v-for="t in testes">
+                                <td>{{t.name}}</td>
+                            </tr>
+                            -->
+                            <tr v-for="ex in exmo">
+                                <td>{{ex.trade_id}}</td>
+                                <td>{{ex.type}}</td>
+                                <td>{{ex.quantity}}</td>
+                                <td>{{ex.price}}</td>
+                                <td>{{ex.amount}}</td>
+                                <td>{{ex.date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" v-if="erro == true">
+                        <div class="col-md-12" style="padding: 20px">
+                            <h1 style="text-align: center">Erro ao carregar dados, verifique sua conexão....</h1>
+                        </div>
+                    </div>
+                    <div class="row" v-if="carregando == true">
+                        <div class="col-md-12" style="padding: 20px">
+                            <h1 style="text-align: center">Carregando Dados....</h1>
+                        </div>
+                    </div>
+                    <div class="row" v-if="debug == true">
+                        <div class="col-md-12" style="padding: 0px">
+                            <div style="padding: 20px; background-color: black; color: white">
+                                <h1 style="color: white">Debug</h1>
+                                <pre style="background-color: black; color: white;border: 0px">{{exmo | json}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/screens/exmo/exmo.js"></script>
+</body>
+
+</html>

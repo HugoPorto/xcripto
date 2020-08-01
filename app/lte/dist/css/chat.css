@@ -1,0 +1,144 @@
+/*
+|----------------------------------------------
+|Listagem <ul> de usuários do control sidebar.
+|----------------------------------------------
+*/
+#users_online ul{
+    padding-left: 0px;
+}
+/*
+|----------------------------------------------
+|Listagem <li> de usuários do control sidebar.
+|----------------------------------------------
+*/
+#users_online ul li{
+    padding-top:5px;
+    padding-left: 5px;
+    float:left;
+    width:100%;    
+    position:relative;
+    list-style-type:none;
+    
+}
+/*
+|--------------------------------------------------------------------------------
+|Listagem <li> de usuários do control sidebar quando o mouse pousa sobre um item.
+|--------------------------------------------------------------------------------
+*/
+#users_online ul li:hover{   
+    background-color: #181f23;
+}
+#users_online ul li a{
+    text-decoration:none;    
+    float:left;
+    width:70%;
+    margin-left:10px;
+    font:12px Tahoma, arial, helvetica;
+    color:#fff;
+    line-height:40px;
+}
+.imgSmall{
+    float:left;
+    width:35px;
+    height:35px;
+    overflow:hidden;
+    border-radius:50%;
+}
+.imgSmall img{width:100%; height:100%;}
+/*
+|---------------------------------------------------------------
+|Circle status do lado direito do control sidebar dos contatos.
+|---------------------------------------------------------------
+*/
+.status{
+    position:absolute;
+    right:8px;
+    top:50%;
+    width:12px;
+    height:12px;
+    margin-top:-6px;
+    border-radius:50%;
+}
+.status.off{background:#dd4b39;}
+.status.on{background:#090;}
+
+/*Chat*/
+/*Div que sustenta a janela de chat*/
+#chats{    
+    position:fixed;    
+    bottom:0px;
+    left:0;
+    width:82%;    
+    z-index:2;
+}
+/*
+|-----------------
+|Chat
+|-----------------
+*/
+.right .direct-chat-text {
+    margin-right: 50px;
+    margin-left: 0;
+    border-color: #00a65a;
+    background: #00a65a;
+    color: white;
+}
+
+.right > .direct-chat-text::before {
+    border-left-color: #00a65a;
+}
+
+.right > .direct-chat-text::after {
+    border-left-color: #00a65a;
+}
+/*
+|-----------------------------------------
+|<ul> das mensagens do chat-box
+|-----------------------------------------
+*/
+.mensagens ul{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px; 
+    float:left;    
+    width:100%;
+}
+/*
+|-----------------------------------------
+|<li> das mensagens do chat-box
+|-----------------------------------------
+*/
+.mensagens ul li{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: -7px;    
+    list-style-type:none;
+}
+/*
+|-----------------------------------------
+|<li> das mensagens do chat-box
+|-----------------------------------------
+*/
+.mensagens ul li.i{    
+    background-color: #ecf0f5;
+    border-radius: 5px;
+}
+/*
+|-----------------------------------------
+|<li> das mensagens do chat-box
+|-----------------------------------------
+*/
+.mensagens ul li.you{    
+    background-color: #f9fafc;
+    border-radius: 7px;
+}
+/*
+|-----------------------------------------
+|Imagens da <li> das mensagens do chat-box
+|-----------------------------------------
+*/
+.img-chat{
+    margin-top: 7px;
+}

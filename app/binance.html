@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XCripto 1.0.0</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="photon/css/photon.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="datatables/dataTables.bootstrap.css">
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <p class="title" style="padding: 5px; font-weight: bold; font-size: 14px">XCripto 1.0.0 - Binance</p>
+            <div class="toolbar-actions">
+                <div class="btn-group">
+                    <button class="btn btn-default" style="padding: 10px">
+                        <span class="icon icon-home" style="margin-right: 3px"></span>
+                        <a href="main.html" role="button"
+                            style="margin-top:10px; text-decoration: none; color: black">Home</a>
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px" @click="makeDebug()">
+                        <span class="icon icon-info-circled" style="margin-right: 3px"></span>
+                        Ativar Modo Debug
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <div class="row"
+                        style="padding-right: 30px; padding-left: 30px; padding-top: 10px; background-color: #d7d7d7">
+                        <div class="col-md-3" style="padding: 0px">
+                            <table class="table table-condensed" style="margin: 0px">
+                                <tbody style="background-color: red; color: white">
+                                    <tr>
+                                        <th>Preço({{sP}})</th>
+                                        <th>Amount({{sV}})</th>
+                                        <th>Total{{tP}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Update software</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-condensed" style="margin: 0px">
+                                <tbody style="background-color: green; color: white">
+                                    <tr>
+                                        <th>Preço({{sP}})</th>
+                                        <th>Amount({{sV}})</th>
+                                        <th>Total{{tP}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Update software</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-6">
+                            <h1>BUY | SELL</h1>
+                            <div class="nav-tabs-custom" style="border-radius: 0px">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab"
+                                            aria-expanded="false">LIMIT</a></li>
+                                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">MARKET</a>
+                                    </li>
+                                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">STOP-LIMIT</a>
+                                    </li>
+                                    <!-- <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
+                                    </li> -->
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Buy: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-success pull-right">Buy(comprar){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Sell: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total"> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-danger pull-right">Sell(vender){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tab_2">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Buy: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-success pull-right">Buy(comprar){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Sell: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-danger pull-right">Sell(vender){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tab_3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Buy: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-success pull-right">Buy(comprar){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <form class="form-horizontal" style="border: 1px dashed black">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <label>Sell: {{moeda}}</label>
+                                                                <label class="pull-right">{{moeda}} Balance:
+                                                                    {{saldoNaMoeda}}</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Price(preço)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Amount(quantidade)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Total">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-danger pull-right">Sell(vender){{moeda}}</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3"
+                            style="overflow: auto; height: 400px; background-color: white; padding: 10px;">
+                            <table id="tickers24hrs" class="table table-condensed">
+                                <thead>
+                                    <th>Pair</th>
+                                    <th>Preço</th>
+                                    <th>Mudança</th>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="tk in tickers24hrs">
+                                        <td>{{tk.symbol}}</td>
+                                        <td>{{tk.lastPrice}}</td>
+                                        <td>{{tk.priceChangePercent}}%</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <th>Pair</th>
+                                    <th>Preço</th>
+                                    <th>Mudança</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box" style="border-top: 1px dashed #d7d7d7; border-radius: 0px">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Open Orders</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date(data)</th>
+                                                    <th>Pair(moeda)</th>
+                                                    <th>Type</th>
+                                                    <th>Side</th>
+                                                    <th>Price</th>
+                                                    <th>Amount</th>
+                                                    <th>Filled%</th>
+                                                    <th>Total</th>
+                                                    <th>Trigger Conditions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="box" style="border-top: 1px dashed #d7d7d7; border-radius: 0px">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">My 24h Orders History</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Pair</th>
+                                                    <th>Type</th>
+                                                    <th>Side</th>
+                                                    <th>Avg</th>
+                                                    <th>Price</th>
+                                                    <th>Filled</th>
+                                                    <th>Amount</th>
+                                                    <th>Total</th>
+                                                    <th>Trigger Conditions</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row" v-if="erro == true">
+                        <div class="col-md-12" style="padding: 20px">
+                            <h1 style="text-align: center">Erro ao carregar dados, verifique sua conexão....</h1>
+                        </div>
+                    </div>
+                    <div class="row" v-if="carregando == true">
+                        <div class="col-md-12" style="padding: 20px">
+                            <h1 style="text-align: center">Carregando Dados....</h1>
+                        </div>
+                    </div>
+                    <div class="row" v-if="debug == true">
+                        <div class="col-md-12" style="padding: 0px">
+                            <div style="padding: 20px; background-color: black; color: white">
+                                <h1 style="color: white">Debug</h1>
+                                <pre style="background-color: black; color: white;border: 0px">{{exmo | json}}</pre>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="scripts/screens/binance/datatableset.js"></script>
+    <script src="scripts/screens/binance/binance.js"></script>
+</body>
+
+</html>

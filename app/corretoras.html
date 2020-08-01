@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Colibri 1.0.0</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="photon/css/photon.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/vendas.css">
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <p class="title" style="padding: 5px; font-weight: bold; font-size: 14px">Colibri 1.0 - Corretora</p>
+            <div class="toolbar-actions">
+                <div class="btn-group">
+                    <button class="btn btn-default" style="padding: 10px">
+                        <span class="icon icon-home" style="margin-right: 3px"></span>
+                        <a href="main.html" role="button"
+                            style="margin-top:10px; text-decoration: none; color: black">Home</a>
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px;" @click="createCorretora()">
+                        <span class="icon icon-plus"></span>
+                        Nova Corretora
+                    </button>
+                    <button class="btn btn-default" style="padding: 10px" @click="makeDebug()">
+                        <span class="icon icon-info-circled" style="margin-right: 3px"></span>
+                        Ativar Modo Debug
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <table class="table table-striped" id="font-table">
+                        <thead>
+                            <tr>
+                                <th>Corretora</th>
+                                <th>Key</th>
+                                <th>Secret</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="corretora in corretoras">
+                                <td>{{corretora.corretora}}</td>
+                                <td>{{corretora.key}}</td>
+                                <td>{{corretora.secret}}</td>                              
+                                <td>
+                                    <button @click="editCorretora(corretora)" id="font-button"
+                                        class="btn btn-large btn-primary">Editar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                    <div style="padding: 20px; background-color: black; color: white" v-if="debug == true">
+                        <h1 style="color: white">Debug</h1>
+                        <pre>{{$data | json}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" v-if="openModal">
+        <div class="wrap">
+            <form action="" id="cadastro-clientes" class="pane-body">
+                <h3 v-if="mode=='cadastro'">
+                    <strong>Cadastro de Corretoras</strong>
+                </h3>
+                <h3 v-if="mode=='edicao'">
+                    <strong>Edição das Corretoras</strong>
+                </h3>
+                <hr>        
+                <div class="form-group">
+                    <label>Selecionar Usuário</label>
+                    <select v-model="corretora.user" class="form-control">
+                        <option value="{{u.nome}}" v-for="u in users">{{u.nome}}</option>
+                    </select>
+                </div>               
+                <div class="form-group">
+                    <input type="text" class="form-control" v-model="corretora.corretora"
+                        placeholder="Corretora">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" v-model="corretora.key"
+                        placeholder="Key" required="true">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" v-model="corretora.secret"
+                        placeholder="Secret" required="true">
+                </div>
+                <hr>
+                <div class="form-actions">
+                    <!--Se eu usar type="buttom ele não recarrega a página...-->
+                    <button type="button" class="btn btn-large btn-negative" @click="openModal=false">Fechar</button>
+                    <button type="button" class="btn btn-large btn-primary" @click="saleStoreOrUpdate()">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/screens/corretoras/corretoras.js"></script>
+</body>
+
+</html>

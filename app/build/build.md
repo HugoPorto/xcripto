@@ -1,0 +1,1 @@
+electron-packager ./ ColibriERP --platform=win32 --x=64 --out D:\ELECTRONPROJECTS\BUILDS --app-version 1.0.0 --overwrite

@@ -1,0 +1,46 @@
+.pane-body{
+    padding: 1rem;
+}
+
+#modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9000;
+}
+
+#modal .wrap{
+    width: 80%;
+    min-height: 60%;
+    margin-left: 10%;
+    margin-top: 5%;
+    background: #fff;
+}
+
+#modal input{
+    color: #333;
+}
+
+#size-toolbar{
+    padding: 10px;
+}
+
+#span-margin{
+    margin-right: 3px;
+}
+
+#link-toolbar{
+    text-decoration: none;
+    color: black;
+}
+
+#font-button{
+    font-size: 14px;
+}
+
+#font-table{
+    font-size: 14px;
+}

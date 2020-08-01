@@ -1,0 +1,139 @@
+body {
+    background: #fff;
+}
+#login_display_messages{
+    height: 1000px;
+}
+.thumbnail {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    padding: 17px;
+    margin-bottom: 20px;
+    line-height: 1.42857;
+    background-color: white;
+    border: 0px;
+    border-radius: 0px;
+    border: 1px solid #d7d7d7;
+    transition: all 0.2s ease-in-out 0s;
+}
+#container_apresentacao {
+    background-color: white;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 40px;
+}
+#container_apresentacao_in {
+    padding-top: 100px;
+    background-color: white;
+}
+.bem-vindo {
+    max-width: 500px;
+    padding: 40px;
+    padding-top: 0px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 0px;
+
+}
+#texto_justificado{
+    text-align: justify;
+    font-size: 16px;
+}
+
+#titulo{
+    font-weight: bold;
+}
+
+/*----------------MODAL-----------------------
+---------------------------------------------
+-------------------------------------------*/
+.jumbotron {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 0px 20px 40px 20px;
+    background-color: White;
+    border-radius: 0px;
+}
+/*.modal-body {
+    padding: 0px;
+}*/
+/*
+#contentModal {
+    border-radius: 0px;
+}*/
+.footer {
+    background: #1C1C1C;
+    margin-top: 0px;
+}
+/*
+Navbar
+*/
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+#conteudo{
+    background:#fff;
+    margin-top: -40px;
+}
+#tab_border{
+    border-radius: 0px;
+}
+/*Políticas*/
+#painel-politica{   
+    background-color: #fff;
+    border: 0px;
+}
+#painel-politica-head{
+    background-color: #fff;    
+}
+/*Botão que aparece depois da que a  tela de login reduz de tamanho*/
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #fff;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+.navbar-default .navbar-toggle {
+    border-color: #fff;
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #fff;    
+    border-radius: 0px;
+}
+/*Botão que aparece depois da que a  tela de login reduz de tamanho*/
+#codigo_convite{
+    background-color: #dcffe3;
+}
+#loader{
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left:0px;    
+    background-color: #fff;
+    /*background-image: url('../img/preloader.gif');*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#loader img{
+    /*border: 1px solid #f00;*/
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*vertical-align: middle;*/
+    top: 30%;
+}
